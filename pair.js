@@ -51,9 +51,10 @@ router.get('/', async (req, res) => {
                 await delay(10000);
                 const sessionPath = path.join(dirs, 'creds.json');
 
-                const megaUrl = await upload(fs.createReadStream(sessionPath), `session-${Date.now()}.json`);
-                let stringSession = 'KERM-MD-V1~' + megaUrl.replace('https://mega.nz/file/', '');
-
+                const megaUrl = await upload(fs.createReadStream(${dirs}/creds.json), ${generateRandomId()}.json);
+                    let stringSession = megaUrl.replace('https://mega.nz/file/', ''); // Extract session ID from URL
+                    stringSession = 'KERM-MD-V1~' + stringSession;  // Prepend your name to the session ID
+                
                 const userJid = jidNormalizedUser(num + '@s.whatsapp.net');
                 await GlobalTechInc.sendMessage(userJid, { text: stringSession });
 
