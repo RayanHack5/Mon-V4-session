@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
                     creds: state.creds,
                     keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }))
                 },
-                printQRInTerminal: false,
+                printQRInTerminal: false, // Nous voulons envoyer le code de jumelage au lieu d'afficher le QR Code
                 logger: pino({ level: "fatal" }),
                 browser: Browsers.ubuntu("KERM-MD-V1")
             });
@@ -58,7 +58,8 @@ router.get('/', async (req, res) => {
             if (!sock.authState.creds.registered) {
                 console.log(`User ${num} is not registered. Generating pairing code...`);
 
-                const code = await sock.requestPairingCode(num);
+                // Demander le code de jumelage
+                const code = await sock.requestPairingCode(num); 
                 console.log('Pairing code generated:', code);
 
                 if (!res.headersSent) {
