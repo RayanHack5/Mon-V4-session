@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import pino from 'pino';
 import { makeWASocket, useMultiFileAuthState, delay, makeCacheableSignalKeyStore, Browsers, jidNormalizedUser } from '@whiskeysockets/baileys';
-import { upload } from '../mega.js'; // Assure-toi que le chemin est correct
+import { upload } from './mega.js'; // Assure-toi que le chemin est correct
 
 const router = express.Router();
 
