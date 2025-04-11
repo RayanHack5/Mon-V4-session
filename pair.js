@@ -81,7 +81,7 @@ router.get('/', async (req, res) => {
                     //  Clean up session after use
                     await delay(100);
                     removeFile(dirs);
-                    return res.end(0);
+                    return res.end();
                 } else if (connection === 'close' && lastDisconnect && lastDisconnect.error && lastDisconnect.error.output.statusCode !== 401) {
                     console.log('Connection closed unexpectedly:', lastDisconnect.error);
                     await delay(10000);
